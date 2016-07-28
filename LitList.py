@@ -1,22 +1,34 @@
 print "Welcome to LitList! Use me to keep track of all the books you currently own or wish to own."
-new_book = raw_input("Would you like to look at your 'Owned Books' or your 'To Buy' list?: " )
+which_lst = raw_input("Do you want to see your 'Owned Books' list or your 'To Buy' list? ")
 owned_books = {}
 buy_books = {}
-def add_owned_book(title, author):
-	owned_books[author] = title
-	add_owned_book(raw_input("Enter the title of the book: \n"),raw_input("Enter the author of the book: \n"))
-	print owned_books
-def books_to_buy(title, author):
-	buy_books[author] = title
-	books_to_buy(raw_input("Enter the title of the book: \n"),raw_input("Enter the author of the book: \n"))
-	print buy_books
-def pick_list():
-	if new_book == "Owned Books":
-		add_owned_book(new_book)
-	elif new_book == "To Buy":
-		buy_books(new_book)
-	else:
-		print "Oops! Try again."
-	pick_list(new_book)
+def add_book(listName):
+	author=raw_input("Enter the author of the book: \n")
+	title=raw_input("Enter the title of the book: \n")
+	if which_lst == "Owned Books":
+		owned_books[author] = title
+		print owned_books
+	elif which_lst == "To Buy":
+		buy_books[author] = title
+		print buy_books
+def order_books(listName, alpha_by):
+	listName = raw_input("Do you want to see the complete list of your To Buy books or your Owned books? \n")
+	if listName == "Owned Books":
+		alpha_by = raw_input("And do you want to see the list alphebetized by author or by title? \n")
+		if alpha_by == "title" or alpha_by == "Title":
+			for key in sorted(owned_books):
+				print "%s: %s" %(title, owned_books[author])
+		elif alpha_by == "author" or alpha_by == "Author":
+			for key in sorted(owned_books):
+				print "%s: %s" %(author, owned_books[title])
+	elif listName == "To Buy":
+		alpha_by = raw_input("And do you want to see the list alphebetized by author or by title? \n")
+		if alpha_by == "title" or alpha_by == "Title":
+			for key in sorted(buy_books):
+				print "%s: %s" %(title, buy_books[author])
+		elif alpha_by == "author" or alpha_by == "Author":
+			for key in sorted(buy_books):
+				print "%s: %s" %(author, buy_books[title])
+
 
 raw_input("")
